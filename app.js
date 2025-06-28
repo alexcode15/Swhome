@@ -25,7 +25,7 @@ const zones = [
   },
   {
     center: [39.933990, 18.32425],
-    radius: 50,
+    radius: 100,
     file: 'sound2.wav',
     label: 'Mimicry',
     color: '#ff6600',
