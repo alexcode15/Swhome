@@ -38,7 +38,7 @@ const zones = [
 zones.forEach(zone => {
     L.circle(zone.center, {
         radius: zone.radius,
-        color: 'transparent'
+        color: 'transparent',
         weight: 0,
         fillColor: zone.color,
         fillOpacity: 0.5,
