@@ -66,16 +66,16 @@ if ("geolocation" in navigator) {
             map.setView([lat, lng], 22);
 
             if (userMarker) {
-                userMarker.setLatLng([lat, lng]);
-            } else {
-                userMarker = L.marker([lat, lng], {
-                    icon: L.divIcon({
-                        className: 'pulse-marker',
-                        iconSize: [16, 16]
-                    }),
-                    interactive: false,
-                }).addTo(map);
+                map.removeLayer(userMarker);
             }
+            
+            userMarker = L.marker([lat, lng], {
+                icon: L.divIcon({
+                    className: 'pulse-marker',
+                    iconSize: [16, 16]
+                }),
+                interactive: false,
+            }).addTo(map);
         
         zones.forEach(zone => {
     const userPoint = turf.point([lng, lat]);
