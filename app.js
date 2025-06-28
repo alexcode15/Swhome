@@ -97,17 +97,18 @@ if ("geolocation" in navigator) {
             console.log(`Exited zone: ${zone.file}`);
             zone.isInsideZone = false;
 
-            zone.howl.fade(zone.howl.volume(), 0, 2000, () => {
-                setTimeout(() => {
-                    if (!zone.isInsideZone) {
-                        zone.howl.pause();
-                    }          
-                }, 2000);
-            });
-        }
-    }
-});
+            const currentVolume = zone.howl.volume();
+            zone.howl.fade(currentVolume, 0, 2000);
 
+            setTimeout(() => {
+                if (!zone.isInsideZone) {
+                    zone.howl.pause();
+                    zone.howl.volume(1);
+                }
+              }, 2100);
+                    }
+                }
+            });
         },
         (error) => {
             console.error("Geolocation error:", error);
