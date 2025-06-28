@@ -15,7 +15,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 const zones = [
   { 
     center: [39.93385, 18.32410],
-    radius: 7,
+    radius: 20,
     file: 'sound1.wav',
     label: 'Time',
     color: '#2e6cff',
