@@ -32,15 +32,16 @@ const zones = [
     type: 'nature',
     howl: null,
     isInsideZone: false
-    }
+  }
 ];
 
 zones.forEach(zone => {
     L.circle(zone.center, {
         radius: zone.radius,
-        color: zone.color,
+        color: 'transparent'
+        weight: 0,
         fillColor: zone.color,
-        fillOpacity: 0.2,
+        fillOpacity: 0.5,
     })
     .bindPopup(`<b>${zone.label}</b>`) 
     .addTo(map);
@@ -65,16 +66,16 @@ if ("geolocation" in navigator) {
             map.setView([lat, lng], 22);
 
             if (userMarker) {
-                map.removeLayer(userMarker);
+                userMarker.setLatLng([lat, lng]);
+            } else {
+                userMarker = L.marker([lat, lng], {
+                    icon: L.divIcon({
+                        className: 'pulse-marker',
+                        iconSize: [16, 16]
+                    }),
+                    interactive: false,
+                }).addTo(map);
             }
-
-            userMarker = L.marker([lat, lng], {
-                icon: L.divIcon({
-                    className: 'pulse-marker',
-                    iconSize: [16, 16]
-                }),
-                interactive: false,
-            }).addTo(map);
         
         zones.forEach(zone => {
     const userPoint = turf.point([lng, lat]);
